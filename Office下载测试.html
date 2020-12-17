@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Office下载</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js"></script>
+  <style>
+    * {
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+    }
+
+    #os {
+      font-size: 20px;
+    }
+
+    .box {
+      margin-top: 10%;
+    }
+
+    hr {
+      width: 300px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div id="os"></div>
+    <hr>
+    <div>
+      <span id="office"></span>
+      <button onclick="office()">点击下载</button>
+    </div>
+    <hr>
+    <div>
+      <span id="winrar"></span>
+      <button onclick="winrar()">点击下载</button>
+    </div>
+    <hr>
+    <div>
+      <span>KMS激活工具下载：</span>
+      <button onclick="kms()">点击下载</button>
+    </div>
+    <hr>
+    <div>
+        <span>如果无法下载请示用百度网盘：提取码：bnlb </span>
+        <button onclick="baidu()">点击跳转</button>
+      </div>
+  </div>
+</body>
+
+<script>
+  const os = navigator.userAgent;
+  console.log(os)
+
+  const winxp = RegExp(/Windows NT 5.1/);
+  const win7 = RegExp(/Windows NT 6.1/);
+  const win8 = RegExp(/Windows NT 6.2/);
+  const win81 = RegExp(/Windows NT 6.3/);
+  const win10 = RegExp(/Windows NT 10.0/);
+
+  var system = '';
+  if (os.match(winxp)) {
+    system = 'Windows XP';
+  }
+  else if (os.match(win7)) {
+    system = 'Windows 7'
+  }
+  else if (os.match(win8)) {
+    system = 'Windows 8'
+  }
+  else if (os.match(win81)) {
+    system = 'Windows 8.1'
+  }
+  else if (os.match(win10)) {
+    system = 'Windows 10'
+  }
+
+  const x64 = RegExp(/x64/);
+  const x86 = RegExp(/x86/);
+
+  var architecture = '';
+
+  if (os.match(x64)) {
+    architecture = '64位';
+  }
+  else if (os.match(x86)) {
+    architecture = '32位';
+  }
+
+  document.getElementById('os').innerHTML = '您的系统是' + system + ' ' + architecture;
+  document.getElementById('office').innerHTML = 'Office ' + architecture + '下载：';
+  document.getElementById('winrar').innerHTML = 'WinRAR ' + architecture + '下载：';
+
+  function office() {
+    if (architecture == '64位') {
+      window.open("ed2k://|file|SW_DVD5_Office_Professional_Plus_2010w_SP1_64Bit_ChnSimp_CORE_MLF_X17-76742.iso|1612515328|032320121E0EE36D8F0C32EC89CA0AB9|/");
+    }
+    else if (architecture == '32位') {
+      window.open("ed2k://|file|SW_DVD5_Office_Professional_Plus_2010w_SP1_W32_ChnSimp_CORE_MLF_X17-76734.iso|1412091904|79B75EE3F629A1BD925E6C0AEFDECA10|/");
+    }
+  }
+
+  function winrar() {
+    if (architecture == '64位') {
+      window.open("https://www.lanzous.com/i38equb");
+    }
+    else if (architecture == '32位') {
+      window.open("https://www.lanzous.com/i38eqja");
+    }
+  }
+
+  function kms() {
+    window.open("https://www.lanzous.com/i38eqgh");
+  }
+
+  function baidu() { 
+    window.open("https://pan.baidu.com/s/1OfMCwv-0f6CecIHgMvRUPA");
+   }
+
+</script>
+
+</html>
